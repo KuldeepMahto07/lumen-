@@ -1,0 +1,180 @@
+.section {
+  position: relative;
+  background: var(--lime);
+  color: #000;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  height: 100svh;
+  will-change: transform;
+}
+
+/* Reduced-motion / no-JS fallback: stack panels vertically. */
+.trackStacked {
+  flex-direction: column;
+  height: auto;
+}
+
+.panel {
+  position: relative;
+  flex: none;
+  width: 100vw;
+  height: 100svh;
+  padding: calc(var(--nav-h) + 2rem) var(--pad-x) clamp(2rem, 5vh, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.trackStacked .panel {
+  width: 100%;
+  height: auto;
+  min-height: 90svh;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.panel .mono {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* ---- Intro panel ---------------------------------------------------------- */
+
+.intro {
+  width: 78vw;
+  min-width: 30rem;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.trackStacked .intro {
+  width: 100%;
+  min-width: 0;
+}
+
+.introTitle {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 1rem + 10vw, 11rem);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  display: flex;
+  flex-direction: column;
+}
+
+.introSerif {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.introFoot {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.arrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.3em;
+  font-size: 0.9rem;
+}
+
+/* ---- Route panels --------------------------------------------------------- */
+
+.routeTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.routeMain {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(1rem, 3vw, 3rem);
+  flex: 1;
+  min-height: 0;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(4rem, 1rem + 20vw, 22rem);
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  color: #000;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.subtitle {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.5rem, 0.8rem + 2.4vw, 3.5rem);
+  line-height: 1;
+  padding-bottom: clamp(0.5rem, 2vh, 2rem);
+  white-space: nowrap;
+}
+
+.routeFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.detail {
+  max-width: 40ch;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.35rem);
+  line-height: 1.35;
+  color: #0a0a0a;
+  text-wrap: balance;
+}
+
+.metric {
+  text-align: right;
+  flex: none;
+}
+
+.metricValue {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1rem + 2vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 760px) {
+  .routeMain {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .name {
+    font-size: clamp(3.5rem, 22vw, 8rem);
+  }
+  .subtitle {
+    padding-bottom: 0;
+  }
+  .routeFoot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .metric {
+    text-align: left;
+  }
+}

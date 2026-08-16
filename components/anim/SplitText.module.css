@@ -1,0 +1,11 @@
+.line {
+  display: block;
+  overflow: hidden;
+  /* A hair of padding stops descenders being clipped by the mask. */
+  padding-bottom: 0.04em;
+}
+
+.inner {
+  display: block;
+  will-change: transform;
+}

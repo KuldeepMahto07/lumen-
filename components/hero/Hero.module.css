@@ -1,0 +1,151 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--nav-h) + 1.5rem) var(--pad-x) clamp(1.5rem, 4vh, 3rem);
+}
+
+/* ---- Media ---------------------------------------------------------------- */
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.imageInner {
+  position: absolute;
+  inset: -2% 0;
+  will-change: transform;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(9, 9, 9, 0.75) 0%, rgba(9, 9, 9, 0.1) 30%, rgba(9, 9, 9, 0.35) 60%, rgba(9, 9, 9, 0.95) 100%),
+    radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(9, 9, 9, 0.6) 100%);
+}
+
+/* ---- Layout rows ---------------------------------------------------------- */
+
+.top,
+.bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top {
+  align-items: flex-start;
+}
+
+.center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wordmark {
+  display: flex;
+  will-change: transform;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: var(--fs-mega);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.letterMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.02em;
+}
+
+.letter {
+  display: block;
+  will-change: transform;
+}
+
+/* ---- Bottom row ----------------------------------------------------------- */
+
+.bottom {
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.coords {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.lede {
+  flex: 1;
+  max-width: 34ch;
+  color: var(--text);
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.scrollLine {
+  width: 3rem;
+  height: 1px;
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--lime);
+  transform-origin: left;
+  animation: scrollcue 2.2s var(--ease-out) infinite;
+}
+
+@keyframes scrollcue {
+  0% { transform: scaleX(0); transform-origin: left; }
+  45% { transform: scaleX(1); transform-origin: left; }
+  55% { transform: scaleX(1); transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+@media (max-width: 760px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .scroll {
+    justify-content: flex-start;
+  }
+  .lede {
+    max-width: 42ch;
+  }
+}

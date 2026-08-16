@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://registry.npmjs.org/next --max-time 20)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://images.unsplash.com/photo-1517649763962-0c623066013b?w=200\" --max-time 20)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://fonts.googleapis.com/css2?family=Inter+Tight --max-time 20)",
+      "Bash(curl -sS -o /dev/null -w \"npm:%{http_code}\\\\n\" https://registry.npmjs.org/next --max-time 30)",
+      "Bash(curl -sS -o /dev/null -w \"unsplash:%{http_code}\\\\n\" \"https://images.unsplash.com/photo-1517649763962-0c623066013b?w=200\" --max-time 30)",
+      "Bash(curl -sS --max-time 40 \"https://unsplash.com/napi/search/photos?query=runner%20night%20city&per_page=5\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(npm install *)",
+      "Bash(echo \"exit=$?\")"
+    ]
+  }
+}

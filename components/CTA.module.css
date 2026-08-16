@@ -1,0 +1,88 @@
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 12vh, 10rem) clamp(3rem, 8vh, 6rem);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.marquee {
+  color: var(--text);
+  opacity: 0.9;
+  margin-bottom: clamp(4rem, 10vh, 8rem);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vh, 3.5rem);
+}
+
+.headline {
+  font-size: var(--fs-display);
+  color: var(--text);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.copy {
+  max-width: 44ch;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.4rem);
+  line-height: 1.5;
+}
+
+/* ---- Button --------------------------------------------------------------- */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 2rem;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--text);
+  transform: translateY(101%);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.button:hover::before {
+  transform: translateY(0);
+}
+
+.buttonLabel,
+.buttonIcon {
+  transition: color 0.4s var(--ease-out);
+}
+
+.button:hover .buttonLabel,
+.button:hover .buttonIcon {
+  color: #000;
+}
+
+.buttonIcon {
+  font-size: 1.2rem;
+  transition: transform 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.button:hover .buttonIcon {
+  transform: translate(3px, -3px);
+}

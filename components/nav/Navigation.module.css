@@ -1,0 +1,183 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  padding-inline: var(--pad-x);
+  transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
+  --nav-ink: var(--text);
+  --nav-muted: var(--muted);
+}
+
+/* Over the lime section, ink flips to black for contrast. */
+.headerLight {
+  --nav-ink: #000;
+  --nav-muted: rgba(0, 0, 0, 0.6);
+}
+
+.headerHidden {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--nav-ink);
+  transition: color 0.4s var(--ease-out);
+}
+
+.brandMark {
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.brandName {
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  font-size: 0.95rem;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center .slash {
+  color: var(--lime);
+}
+
+.center :global(.mono) {
+  color: var(--nav-ink);
+  transition: color 0.4s var(--ease-out);
+}
+
+.headerLight .center .slash {
+  color: #000;
+}
+
+/* ---- Floating pill --------------------------------------------------------- */
+
+.pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  mix-blend-mode: normal;
+  background: rgba(15, 15, 15, 0.5);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.pillMark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 12px var(--lime);
+  flex: none;
+}
+
+.ticks {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.tick {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  color: var(--muted);
+  transition: color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.tickIndex {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.tickLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  margin-left: 0;
+  transition: max-width 0.4s var(--ease-out), opacity 0.3s var(--ease-out),
+    margin-left 0.4s var(--ease-out);
+}
+
+.tick:hover {
+  color: var(--text);
+}
+
+.tick:hover .tickLabel {
+  max-width: 6rem;
+  opacity: 1;
+  margin-left: 0.4rem;
+}
+
+.tickActive {
+  color: #000;
+  background: var(--lime);
+}
+
+.tickActive .tickLabel {
+  max-width: 6rem;
+  opacity: 1;
+  margin-left: 0.4rem;
+}
+
+.progressTrack {
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 3px;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  background: var(--lime);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+@media (max-width: 1180px) {
+  .center {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .tickLabel {
+    display: none;
+  }
+  .tickActive .tickLabel {
+    display: none;
+  }
+  .pill {
+    gap: 0.5rem;
+    padding: 0.45rem 0.7rem;
+  }
+}
